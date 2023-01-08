@@ -4,11 +4,15 @@
 		<title> Home </title>
 		$head
 	</head>
-	<body style="background-color: #242582;">
+	<body style="background: linear-gradient(to right, #020022 0%, #060019 100%); overflow-x: hidden;">
 		$navbar
 
-		<div class="jumbotron">
-			<h1> Welcome! </h1>
+		$submissions
+
+		<div style="margin: 20px; display: flex; justify-content: center;">
+			<a href="/?$prev"><button class="bg-blue-darkblue-gradient rounded-pill border-0 text-white" style="padding: 2px 10px; margin: 0 5px; width: 80px;"> Previous </button></a>
+			<p class="d-inline-flex bg-blue-darkblue-gradient rounded-pill border-0 text-white" style="padding: 2px 10px; margin: 0 5px;"> $page </p>
+			<a href="/?$next"><button class="bg-blue-darkblue-gradient rounded-pill border-0 text-white" style="padding: 2px 10px; margin: 0 5px; width: 80px;"> Next </button></a>
 		</div>
 
 		$fixed_footer

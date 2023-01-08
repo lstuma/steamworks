@@ -15,24 +15,53 @@
 {
 	padding: 10px;
 	margin: 20px;
-	background-color: #2F2FA2;
+	background-color: #3500D3;
+	border-radius: 10px;
 }
 
-.text-dark-blue { color: #242582; }
-.bg-dark-blue { background-color: #242582; }
+.alert
+{
+	padding: 10px;
+	margin: 20px;
+	background-color: #fc0330;
+	border-radius: 10px;
+}
 
-.text-blue { color: #2F2FA2; }
-.bg-blue { background-color: #2F2FA2; }
+.text-darkblue { color: #240090; }
+.bg-darkblue { background-color: #240090; }
 
-.text-purple { color: #553D67; }
-.bg-purple { background-color: #553D67; }
+.text-blue { color: #3500D3; }
+.bg-blue { background-color: #3500D3; }
 
-.text-light-purple { color: #99738E; }
-.bg-light-purple { background-color: #99738E; }
+.text-darkpurple-blue-gradient { color: linear-gradient(to right, #0C0032 0%, #3500D3 100%);  }
+.text-blue-darkpurple-gradient { color: linear-gradient(to left, #0C0032 0%, #3500D3 100%);  }
 
-.text-pink { color: #F64C72; }
-.bg-pink { background-color: #F64C72; }
+.text-darkblue-blue-gradient { color: linear-gradient(to right, #240090 0%, #3500D3 100%);  }
+.text-blue-darkblue-gradient { color: linear-gradient(to left, #240090 0%, #3500D3 100%);  }
 
+.bg-darkblue-blue-gradient { background: linear-gradient(to right, #240090 0%, #3500D3 100%);  }
+.bg-blue-darkblue-gradient { background: linear-gradient(to left, #240090 0%, #3500D3 100%);  }
+
+.bg-purple-blue-gradient { background: linear-gradient(to right, #190061 0%, #3500D3 100%);  }
+.bg-blue-purple-gradient { background: linear-gradient(to left, #190061 0%, #3500D3 100%);  }
+
+.bg-purple-darkblue-gradient { background: linear-gradient(to right, #190061 0%, #240090 100%);  }
+.bg-darkblue-purple-gradient { background: linear-gradient(to left, #190061 0%, #240090 100%);  }
+
+.bg-purple-darkpurple-gradient { background: linear-gradient(to left, #0C0032 0%, #190061 100%);  }
+.bg-darkpurple-purple-gradient { background: linear-gradient(to right, #0C0032 0%, #190061 100%);  }
+
+.text-darkpurple { color: #0C0032; }
+.bg-darkpurple { background-color: #0C0032; }
+
+.text-purple { color: #190061; }
+.bg-purple { background-color: #190061; }
+
+.text-gray { color: #282828; }
+.bg-gray { background-color: #282828; }
+
+.text-black { color: #000000; }
+.bg-black { background-color: #000000; }
 
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6, navbar-brand
 {
@@ -44,12 +73,4 @@
 
 a {	text-decoration: none; }
 
-footer
-{
-	width: 100%;
-	height: 5px;
-	color: #FFFFFF;
-	background-color: #2F2FA2;
-	display: flex;
-	justify-content: center;
-}
+.navbar { padding: 10px; }
