@@ -12,5 +12,4 @@ public interface SubmissionRepository extends JpaRepository<Submission, String> 
 
     @Query("SELECT s FROM Submission s WHERE s.id = ?1")
     Optional<Submission> findSubmissionById(int id);
-
 }

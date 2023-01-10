@@ -1,5 +1,6 @@
 package info.steamworks.steamworks;
 
+import info.steamworks.steamworks.submission.ImageSubmission;
 import info.steamworks.steamworks.submission.Submission;
 import info.steamworks.steamworks.submission.SubmissionRepository;
 import info.steamworks.steamworks.submission.SubmissionService;
@@ -52,7 +53,7 @@ public class SteamworksController {
     }
 
     public String page(String path) throws IOException {
-        return Files.readString(Paths.get("PATH\\"+path));
+        return Files.readString(Paths.get("PATH\\templates\\"+path));
     }
 
     // Format page using params and standard formatting
@@ -146,10 +147,10 @@ public class SteamworksController {
 
         // Get submission body, title, and username of poster
         Optional<Submission> submission = submissionService.getSubmission(page);
+        System.out.println("INDEX.HTML>" + submission);
         String title = submission.get().getTitle();
         String body = submission.get().getBody();
         String postername = submission.get().getUsername();
-
         return format(page("index.html"), new String[][]{{"title", title}, {"body", body}, {"postername", "u/"+postername}, {"prev", "page="+(page<this.submissionCount?page+1:this.submissionCount)}, {"next", "page="+(page>1?String.valueOf(page-1):1)}, {"page", String.valueOf(page)}}, 2, loginId);
     }
 
@@ -166,7 +167,7 @@ public class SteamworksController {
         // Get submission title and body
         String title = request.getParameter("title");
         String body = request.getParameter("body");
-        System.out.println(Arrays.toString(submissionService.getSubmissions().toArray()));
+        String img_src = request.getParameter("img_src");
         // Make sure submission title and body aren't empty
         if(title.isEmpty() || title.isBlank() || body.isEmpty() || body.isBlank())
             return format(page("write.html"), new String[][]{{"reason", "Post title or body cannot be left empty!"}}, 2);
@@ -176,16 +177,19 @@ public class SteamworksController {
         if(loginId.isPresent() && verifyLoginSession(loginId.get()))
         {
             // Create submission
-            Submission submission = new Submission(getUserFromLoginSession(loginId.get()).get().getUsername(), title, body);
+            Submission submission = img_src.isEmpty() || img_src.isBlank()?
+                    new Submission(getUserFromLoginSession(loginId.get()).get().getUsername(), title, body):
+                    new ImageSubmission(getUserFromLoginSession(loginId.get()).get().getUsername(), title, body, img_src);
+
             // Save submission to database
-            Boolean post_saved = submissionService.addSubmission(submission);
+            boolean post_saved = submissionService.addSubmission(submission);
             // Return your post is live page if saving to database worked
-            if(post_saved)
-            {
+            if (post_saved) {
                 this.submissionCount++;
+                System.out.println("Successfully saved post " + submission);
                 return format(page("your_post_is_live.html"), loginId);
-            }
-            else format(page("write.html"), new String[][]{{"reason", "An unknown exception occurred while trying to publish your post!"}}, 2);
+            } else
+                format(page("write.html"), new String[][]{{"reason", "An unknown exception occurred while trying to publish your post!"}}, 2);
         }
         // Return redirect to homepage
         return format(page("redirect.html"), new String[][]{{"link", "/login"}}, 1);

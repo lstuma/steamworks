@@ -8,10 +8,10 @@ public class Submission {
     @Id
     @SequenceGenerator( name = "submission_sequence", sequenceName = "submission_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "submission_sequence")
-    private Integer id;
-    private String username;
-    private String title;
-    private String body;
+    protected Integer id;
+    protected String username;
+    protected String title;
+    protected String body;
 
 
     public Submission()
