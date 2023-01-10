@@ -52,7 +52,7 @@ public class SteamworksController {
     }
 
     public String page(String path) throws IOException {
-        return Files.readString(Paths.get("C:\\Users\\lukas\\OneDrive\\Desktop\\steamworks\\src\\main\\resources\\templates\\"+path));
+        return Files.readString(Paths.get("PATH\\"+path));
     }
 
     // Format page using params and standard formatting
