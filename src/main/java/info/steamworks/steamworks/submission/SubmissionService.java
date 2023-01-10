@@ -1,5 +1,6 @@
 package info.steamworks.steamworks.submission;
 
+import com.fasterxml.jackson.databind.JsonSerializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,10 +39,28 @@ public class SubmissionService {
         }
         return true;
     }
+    public boolean addImageSubmission(ImageSubmission submission)
+    {
+        // Try saving submission to database otherwise return false
+        try {
+            submissionRepository.save(submission);
+        }
+        catch (Exception e)
+        {
+            return false;
+        }
+        return true;
+    }
 
     public Optional<Submission> getSubmission(int id)
     {
-        // Return all submissions on given page
-        return submissionRepository.findSubmissionById(id);
+        try {
+            // Return all submissions on given page
+            return submissionRepository.findSubmissionById(id);
+        } catch(Exception e) {
+            // Return image submission
+            System.out.println("SUBMISSION:" + e);
+        }
+        return Optional.empty();
     }
 }
