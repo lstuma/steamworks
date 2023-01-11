@@ -2,7 +2,6 @@ package info.steamworks.steamworks;
 
 import info.steamworks.steamworks.submission.ImageSubmission;
 import info.steamworks.steamworks.submission.Submission;
-import info.steamworks.steamworks.submission.SubmissionRepository;
 import info.steamworks.steamworks.submission.SubmissionService;
 import info.steamworks.steamworks.user.AppUser;
 import info.steamworks.steamworks.user.AppUserService;
@@ -24,8 +23,8 @@ import java.util.*;
 public class SteamworksController {
 
     private final String[][] standard_formatting;
-    public final AppUserService appUserService;
-    public final SubmissionService submissionService;
+    private final AppUserService appUserService;
+    private final SubmissionService submissionService;
     private ArrayList<String> loginSessions;
     private int submissionCount;
 
