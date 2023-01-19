@@ -1,6 +1,6 @@
 # Steamworks
 ## About
-This is a project for school. It's meant to be a webapp where users of the site can submit posts containing text and possibly images.
+This is a project for **school**. It's meant to be a webapp where users can submit posts containing text and possibly images.
 
 ## Tech Stack
 **Client:** HTML, CSS
